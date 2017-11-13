@@ -1,56 +1,25 @@
-import {AppRegistry, Text, View} from 'react-native';
-import React, {Component} from 'react'
-import {Actions, Router, Scene} from 'react-native-router-flux';
-import App from './App';
-import Drawer from 'react-native-drawer'
+import { AppRegistry } from 'react-native';
+import React, { Component } from 'react'
+import { Router, Scene } from 'react-native-router-flux';
+import MainPage from './src/pages/MainPage';
+import AboutPage from './src/pages/AboutPage';
+import SideBar from './src/components/SideBar'
 
-const Page = () => {
+class App extends Component {
+
+
+  render() {
     return (
-        <View style={{margin: 128}}>
-            <Text onPress={Actions.pageOne}>This is PageTwo!</Text>
-        </View>
+      <SideBar>
+        <Router>
+          <Scene key="root" tabs={true} hideNavBar panHandlers={null}>
+            <Scene key="mainPage" component={MainPage} hideNavBar title="Home" />
+            <Scene key="aboutPage" component={AboutPage} title="About" initial={true} />
+          </Scene>
+        </Router>
+      </SideBar>
     )
-};
-
-export default class LastApp extends Component {
-    closeControlPanel = () => {
-        this._drawer.close()
-    };
-    openControlPanel = () => {
-        this._drawer.open()
-    };
-
-    renderContent() {
-        return (
-            <Text onPress={this.closeControlPanel.bind(this)}>Test</Text>
-        )
-    }
-
-    render() {
-        return (
-            <Drawer
-                ref={(ref) => this._drawer = ref}
-                content={this.renderContent()}
-                open={false}
-                openDrawerOffset={100}
-                acceptPan={true}
-                panOpenMask={.1}
-                panCloseMask={100}
-                tweenHandler={Drawer.tweenPresets.parallax}
-            >
-                <Router>
-
-                    <Scene key="root" tabs={true} hideNavBar panHandlers={null}>
-
-                        <Scene key="pageOne" component={App} hideNavBar title="PageOne"/>
-                        <Scene key="pageTwo" component={Page} title="PageTwo" initial={true}/>
-
-                    </Scene>
-
-                </Router>
-            </Drawer>
-        )
-    }
+  }
 }
 
-AppRegistry.registerComponent('test_native', () => LastApp);
+AppRegistry.registerComponent('test_native', () => App);
