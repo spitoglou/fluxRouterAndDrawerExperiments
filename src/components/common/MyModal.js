@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableOpacity, View } from 'react-native';
-import MyButton from "./Button";
+import { Button } from "./Button";
 
 class MyModal extends Component {
 
@@ -36,9 +36,9 @@ class MyModal extends Component {
             </View>
           </View>
         </Modal>
-        <MyButton onPress={() => this.setModalVisible(true)}>
+        <Button onPress={() => this.setModalVisible(true)}>
           Show Modal
-        </MyButton>
+        </Button>
         {/*<TouchableOpacity onPress={() => {*/}
         {/*this.setModalVisible(true)*/}
         {/*}}>*/}

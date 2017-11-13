@@ -1,16 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Camera from 'react-native-camera';
 import { CardSection } from "../components/common/CardSection";
 import { Button } from "../components/common/Button";
 import { Header } from "../components/common/Header";
-
 
 class MainPage extends Component<{}> {
   state = {
@@ -27,10 +20,6 @@ class MainPage extends Component<{}> {
 
   _activateScanner() {
     this.setState({ cameraActive: true })
-  }
-
-  componentWillMount() {
-    console.log('Component will Mount')
   }
 
   renderCamera() {

@@ -4,18 +4,16 @@ import { Actions } from 'react-native-router-flux';
 
 class Menu extends Component {
 
+  _navigate(page) {
+    Actions[page]();
+    this.props.closeControlPanel()
+  }
 
   render() {
     return (
       <View>
-        <Text onPress={() => {
-          Actions.mainPage();
-          this.props.closeControlPanel()
-        }}>Home</Text>
-        <Text onPress={() => {
-          Actions.aboutPage();
-          this.props.closeControlPanel()
-        }}>About</Text>
+        <Text onPress={() => this._navigate('mainPage')}>Home</Text>
+        <Text onPress={() => this._navigate('aboutPage')}>About</Text>
       </View>
     )
   }

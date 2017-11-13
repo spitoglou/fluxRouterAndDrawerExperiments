@@ -6,6 +6,7 @@ class SideBar extends Component {
   closeControlPanel = () => {
     this._drawer.close()
   };
+
   openControlPanel = () => {
     this._drawer.open()
   };

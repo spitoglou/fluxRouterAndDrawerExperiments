@@ -6,8 +6,6 @@ import AboutPage from './src/pages/AboutPage';
 import SideBar from './src/components/SideBar'
 
 class App extends Component {
-
-
   render() {
     return (
       <SideBar>
