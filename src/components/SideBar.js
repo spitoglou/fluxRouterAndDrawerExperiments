@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Drawer from 'react-native-drawer'
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+import { Actions } from 'react-native-router-flux';
 
 class SideBar extends Component {
   closeControlPanel = () => {
@@ -12,7 +13,16 @@ class SideBar extends Component {
 
   renderContent() {
     return (
-      <Text onPress={this.closeControlPanel.bind(this)}>Test</Text>
+      <View>
+        <Text onPress={() => {
+          Actions.mainPage();
+          this.closeControlPanel()
+        }}>Home</Text>
+        <Text onPress={() => {
+          Actions.aboutPage();
+          this.closeControlPanel()
+        }}>About</Text>
+      </View>
     )
   }
 

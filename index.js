@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <SideBar>
         <Router>
-          <Scene key="root" tabs={true} hideNavBar panHandlers={null}>
+          <Scene key="root" hideNavBar>
             <Scene key="mainPage" component={MainPage} hideNavBar title="Home" />
             <Scene key="aboutPage" component={AboutPage} title="About" initial={true} />
           </Scene>
