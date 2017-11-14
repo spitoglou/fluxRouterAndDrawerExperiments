@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Actions } from 'react-native-router-flux'
 import { Avatar, Button, FormInput, FormLabel } from 'react-native-elements'
 
@@ -17,6 +17,8 @@ const AboutPage = () => {
       <Button
         raised
         onPress={Actions.mainPage}
+        Component={TouchableOpacity}
+
         color={'white'}
         backgroundColor={'blue'}
         icon={{ name: 'home' }}
