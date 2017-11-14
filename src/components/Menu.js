@@ -6,7 +6,7 @@ class Menu extends Component {
 
   _navigate(page) {
     Actions[page]();
-    this.props.closeControlPanel()
+    //this.props.closeControlPanel()
   }
 
   render() {
