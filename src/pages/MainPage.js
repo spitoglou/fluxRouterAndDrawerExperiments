@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import Camera from 'react-native-camera';
 import { CardSection } from "../components/common/CardSection";
 import { Button } from "../components/common/Button";
-import { Header } from "../components/common/Header";
+import { List, ListItem } from 'react-native-elements'
+
+const PushNotification = require('react-native-push-notification');
 
 class MainPage extends Component<{}> {
   state = {
@@ -14,7 +16,11 @@ class MainPage extends Component<{}> {
   };
 
   _handleBarCodeRead = ({ type, data }) => {
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    PushNotification.localNotification({
+      /* iOS and Android properties */
+      message: `Bar code with type ${type} and data ${data} has been scanned!`, // (required)
+    });
+    PushNotification.setApplicationIconBadgeNumber(3);
     this.setState({ cameraActive: false, type: type, code: data })
   };
 
@@ -50,9 +56,20 @@ class MainPage extends Component<{}> {
     } else {
       return (
         <View>
-          <Header headerText={'Scanner App'} />
-          <Text>Type: {this.state.type}</Text>
-          <Text>Code: {this.state.code}</Text>
+          <List>
+            <ListItem
+              key={1}
+              title={'Type: ' + this.state.type}
+              leftIcon={{ name: 'barcode', type: 'font-awesome', color: 'green' }}
+              hideChevron
+            />
+            <ListItem
+              key={2}
+              title={'Code: ' + this.state.code}
+              leftIcon={{ name: 'apps', color: 'blue' }}
+              hideChevron
+            />
+          </List>
           <CardSection>
             <Button onPress={this._activateScanner.bind(this)}>
               Activate Camera/Scanner

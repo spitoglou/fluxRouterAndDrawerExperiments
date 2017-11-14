@@ -8,6 +8,7 @@ import MenuIcon from './images/menu_burger.png';
 
 class App extends Component {
   render() {
+    console.log('Render App');
     return (
 
       <Router>
